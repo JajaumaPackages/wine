@@ -102,7 +102,6 @@ BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 %endif
 BuildRequires:  openldap-devel
-BuildRequires:  perl-generators
 BuildRequires:  unixODBC-devel
 BuildRequires:  sane-backends-devel
 BuildRequires:  systemd-devel
