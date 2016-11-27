@@ -8,7 +8,7 @@
 
 # build with compholio-patches, see:  http://www.compholio.com/wine-compholio/
 # uncomment to enable; comment-out to disable.
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} >= 7
 %global compholio 1
 %endif # 0%{?fedora}
 
@@ -22,7 +22,7 @@
 
 Name:           wine
 Version:        1.9.23
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
@@ -97,7 +97,7 @@ BuildRequires:  libusb-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  ncurses-devel
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} >= 7
 BuildRequires:  ocl-icd-devel
 BuildRequires:  opencl-headers
 %endif
@@ -137,7 +137,7 @@ BuildRequires:  gettext-devel
 BuildRequires:  chrpath
 BuildRequires:  gstreamer1-devel
 BuildRequires:  gstreamer1-plugins-base-devel
-%if 0%{?fedora} > 24
+%if 0%{?fedora} > 24 || 0%{?rhel} >= 7
 BuildRequires:  mpg123-devel
 %endif
 
@@ -192,8 +192,8 @@ Requires:       wine-twain(x86-64) = %{version}-%{release}
 Requires:       wine-pulseaudio(x86-64) = %{version}-%{release}
 %if 0%{?fedora} >= 10 || 0%{?rhel} >= 6
 Requires:       wine-openal(x86-64) = %{version}-%{release}
-%endif 
-%if 0%{?fedora}
+%endif
+%if 0%{?fedora} || 0%{?rhel} >= 7
 Requires:       wine-opencl(x86-64) = %{version}-%{release}
 %endif
 %if 0%{?fedora} >= 17
@@ -212,7 +212,7 @@ Requires:       wine-ldap = %{version}-%{release}
 Requires:       wine-twain = %{version}-%{release}
 Requires:       wine-pulseaudio = %{version}-%{release}
 Requires:       wine-openal = %{version}-%{release}
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} >= 7
 Requires:       wine-opencl = %{version}-%{release}
 %endif
 Requires:       mesa-dri-drivers
@@ -412,7 +412,7 @@ Requires:      wine-symbol-fonts = %{version}-%{release}
 Requires:      wine-wingdings-fonts = %{version}-%{release}
 # intermediate fix for #593140
 Requires:      liberation-sans-fonts liberation-serif-fonts liberation-mono-fonts
-%if 0%{?fedora} > 12
+%if 0%{?fedora} > 12 || 0%{?rhel} >= 7
 Requires:      liberation-narrow-fonts
 %endif
 
@@ -650,7 +650,7 @@ Requires: wine-core = %{version}-%{release}
 This package adds an openal driver for wine.
 %endif
 
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} >= 7
 %package opencl
 Summary: OpenCL support for wine
 Requires: wine-core = %{version}-%{release}
@@ -762,7 +762,7 @@ mkdir -p %{buildroot}%{_datadir}/wine/gecko
 mkdir -p %{buildroot}%{_datadir}/wine/mono
 
 # extract and install icons
-%if 0%{?fedora} > 10
+%if 0%{?fedora} > 10 || 0%{?rhel} >= 7
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 
 # This replacement masks a composite program icon .SVG down
@@ -1733,7 +1733,7 @@ fi
 %{_libdir}/wine/winehid.sys.so
 %{_libdir}/wine/winejoystick.drv.so
 %{_libdir}/wine/winemapi.dll.so
-%if 0%{?fedora} > 24
+%if 0%{?fedora} > 24 || 0%{?rhel} >= 7
 %{_libdir}/wine/winemp3.acm.so
 %endif
 %{_libdir}/wine/winex11.drv.so
@@ -2022,7 +2022,7 @@ fi
 %{_datadir}/applications/wine-oleview.desktop
 %{_datadir}/desktop-directories/Wine.directory
 %config %{_sysconfdir}/xdg/menus/applications-merged/wine.menu
-%if 0%{?fedora} >= 10
+%if 0%{?fedora} >= 10 || 0%{?rhel} >= 7
 %{_datadir}/icons/hicolor/scalable/apps/*svg
 %endif
 
@@ -2093,12 +2093,15 @@ fi
 %{_libdir}/wine/openal32.dll.so
 %endif
 
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} >= 7
 %files opencl
 %{_libdir}/wine/opencl.dll.so
 %endif
 
 %changelog
+* Sun Nov 27 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-3
+- Adapt for RHEL7-alike
+
 * Wed Nov 23 2016 Michael Cronenworth <mike@cchtml.com> 1.9.23-2
 - drop sysvinit on Fedora, again
 
