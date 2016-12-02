@@ -22,7 +22,7 @@
 
 Name:           wine
 Version:        1.9.23
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
@@ -133,7 +133,6 @@ BuildRequires:  fontpackages-devel
 BuildRequires:  ImageMagick-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  gettext-devel
-BuildRequires:  chrpath
 BuildRequires:  gstreamer1-devel
 BuildRequires:  gstreamer1-plugins-base-devel
 %if 0%{?fedora} > 24 || 0%{?rhel} >= 7
@@ -165,10 +164,10 @@ Requires:       wine-cms(x86-32) = %{version}-%{release}
 Requires:       wine-ldap(x86-32) = %{version}-%{release}
 Requires:       wine-twain(x86-32) = %{version}-%{release}
 Requires:       wine-pulseaudio(x86-32) = %{version}-%{release}
-%if 0%{?fedora} >= 10 || 0%{?rhel} == 6
+%if 0%{?fedora} >= 10 || 0%{?rhel} >= 6
 Requires:       wine-openal(x86-32) = %{version}-%{release}
 %endif
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} >= 7
 Requires:       wine-opencl(x86-32) = %{version}-%{release}
 %endif
 %if 0%{?fedora} >= 17
@@ -722,17 +721,6 @@ touch %{buildroot}%{_bindir}/wine
 touch %{buildroot}%{_bindir}/wine-preloader
 %endif
 touch %{buildroot}%{_bindir}/wineserver
-
-# remove rpath
-chrpath --delete %{buildroot}%{_bindir}/wmc
-chrpath --delete %{buildroot}%{_bindir}/wrc
-%ifarch x86_64 aarch64
-chrpath --delete %{buildroot}%{_bindir}/wine64
-chrpath --delete %{buildroot}%{_bindir}/wineserver64
-%else
-chrpath --delete %{buildroot}%{_bindir}/wine32
-chrpath --delete %{buildroot}%{_bindir}/wineserver32
-%endif
 
 mkdir -p %{buildroot}%{_sysconfdir}/wine
 
@@ -2098,6 +2086,9 @@ fi
 %endif
 
 %changelog
+* Fri Dec 02 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-4
+- Rebuilt for altarch
+
 * Sun Nov 27 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-3
 - Adapt for RHEL7-alike
 
