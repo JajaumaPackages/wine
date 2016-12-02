@@ -22,7 +22,7 @@
 
 Name:           wine
 Version:        1.9.23
-Release:        5%{?dist}
+Release:        6%{?dist}
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
@@ -156,8 +156,7 @@ Requires:       wine-desktop = %{version}-%{release}
 Requires:       wine-fonts = %{version}-%{release}
 
 # x86-32 parts
-%ifarch %{ix86}
-%if 0%{?fedora} || 0%{?rhel} <= 6
+%ifarch %{ix86} x86_64
 Requires:       wine-core(x86-32) = %{version}-%{release}
 Requires:       wine-capi(x86-32) = %{version}-%{release}
 Requires:       wine-cms(x86-32) = %{version}-%{release}
@@ -177,7 +176,6 @@ Requires:       wine-mono = %winemono
 #  wait for rhbz#968860 to require arch-specific samba-winbind-clients
 Requires:       /usr/bin/ntlm_auth
 Requires:       mesa-dri-drivers(x86-32)
-%endif
 %endif
 
 # x86-64 parts
@@ -2086,6 +2084,9 @@ fi
 %endif
 
 %changelog
+* Fri Dec 02 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-6
+- Revert previous 32-bit dependencies fix and apply another one
+
 * Fri Dec 02 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-5
 - Fix 32-bit dependencies list generation
 
