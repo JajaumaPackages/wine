@@ -22,7 +22,7 @@
 
 Name:           wine
 Version:        1.9.23
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
@@ -156,7 +156,7 @@ Requires:       wine-desktop = %{version}-%{release}
 Requires:       wine-fonts = %{version}-%{release}
 
 # x86-32 parts
-%ifarch %{ix86} x86_64
+%ifarch %{ix86}
 %if 0%{?fedora} || 0%{?rhel} <= 6
 Requires:       wine-core(x86-32) = %{version}-%{release}
 Requires:       wine-capi(x86-32) = %{version}-%{release}
@@ -2086,6 +2086,9 @@ fi
 %endif
 
 %changelog
+* Fri Dec 02 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-5
+- Fix 32-bit dependencies list generation
+
 * Fri Dec 02 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-4
 - Rebuilt for altarch
 
