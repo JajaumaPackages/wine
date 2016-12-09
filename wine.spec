@@ -7,10 +7,7 @@
 #global _default_patch_fuzz 2
 
 # build with compholio-patches, see:  http://www.compholio.com/wine-compholio/
-# uncomment to enable; comment-out to disable.
-%if 0%{?fedora} || 0%{?rhel} >= 7
-%global compholio 1
-%endif # 0%{?fedora}
+%global compholio 0
 
 # binfmt macros for RHEL
 %if 0%{?rhel} == 7
@@ -22,7 +19,7 @@
 
 Name:           wine
 Version:        1.9.23
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
@@ -1085,9 +1082,7 @@ fi
 %{_libdir}/wine/expand.exe.so
 %{_libdir}/wine/extrac32.exe.so
 %{_libdir}/wine/findstr.exe.so
-%if 0%{?compholio}
 %{_libdir}/wine/fsutil.exe.so
-%endif
 %{_libdir}/wine/hostname.exe.so
 %{_libdir}/wine/ipconfig.exe.so
 %{_libdir}/wine/winhlp32.exe.so
@@ -1282,20 +1277,20 @@ fi
 %{_libdir}/wine/api-ms-win-service-winsvc-l1-2-0.dll.so
 %{_libdir}/wine/api-ms-win-shell-shellcom-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-shell-shellfolders-l1-1-0.dll.so
-%if 0%{?compholio}
 %{_libdir}/wine/api-ms-win-appmodel-runtime-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-core-apiquery-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-com-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-core-delayload-l1-1-1.dll.so
-%{_libdir}/wine/api-ms-win-core-heap-l2-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-kernel32-legacy-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-core-libraryloader-l1-2-0.dll.so
-%{_libdir}/wine/api-ms-win-core-quirks-l1-1-0.dll.so
-%{_libdir}/wine/api-ms-win-core-shlwapi-obsolete-l1-2-0.dll.so
 %{_libdir}/wine/api-ms-win-core-threadpool-l1-2-0.dll.so
 %{_libdir}/wine/api-ms-win-core-winrt-registration-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-wow64-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-eventing-classicprovider-l1-1-0.dll.so
+%if 0%{?compholio}
+%{_libdir}/wine/api-ms-win-core-heap-l2-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-quirks-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-shlwapi-obsolete-l1-2-0.dll.so
 %{_libdir}/wine/api-ms-win-rtcore-ntuser-draw-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-rtcore-ntuser-window-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-shcore-obsolete-l1-1-0.dll.so
@@ -1408,12 +1403,12 @@ fi
 %{_libdir}/wine/ext-ms-win-rtcore-gdi-rgn-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-dc-access-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-dpi-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-kernel32-package-current-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll.so
 %if 0%{?compholio}
 %{_libdir}/wine/ext-ms-win-appmodel-usercontext-l1-1-0.dll.so
-%{_libdir}/wine/ext-ms-win-kernel32-package-current-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-mouse-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-syscolors-l1-1-0.dll.so
-%{_libdir}/wine/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-uxtheme-themes-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-xaml-pal-l1-1-0.dll.so
 %endif
@@ -1468,9 +1463,7 @@ fi
 %{_libdir}/wine/jscript.dll.so
 %{_libdir}/wine/jsproxy.dll.so
 %{_libdir}/wine/kernel32.dll.so
-%if 0%{?compholio}
 %{_libdir}/wine/kernelbase.dll.so
-%endif
 %{_libdir}/wine/ksuser.dll.so
 %{_libdir}/wine/ktmw32.dll.so
 %{_libdir}/wine/loadperf.dll.so
@@ -1644,9 +1637,7 @@ fi
 %{_libdir}/wine/shell32.dll.so
 %{_libdir}/wine/shfolder.dll.so
 %{_libdir}/wine/shlwapi.dll.so
-%if 0%{?compholio}
 %{_libdir}/wine/shutdown.exe.so
-%endif
 %{_libdir}/wine/slbcsp.dll.so
 %{_libdir}/wine/slc.dll.so
 %{_libdir}/wine/snmpapi.dll.so
@@ -1665,9 +1656,7 @@ fi
 %{_libdir}/wine/tapi32.dll.so
 %{_libdir}/wine/taskkill.exe.so
 %{_libdir}/wine/taskschd.dll.so
-%if 0%{?compholio}
 %{_libdir}/wine/tdi.sys.so
-%endif
 %{_libdir}/wine/traffic.dll.so
 %{_libdir}/wine/ucrtbase.dll.so
 %if 0%{?compholio}
@@ -2084,6 +2073,9 @@ fi
 %endif
 
 %changelog
+* Fri Dec 09 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-7
+- Disable compholio
+
 * Fri Dec 02 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-6
 - Revert previous 32-bit dependencies fix and apply another one
 
