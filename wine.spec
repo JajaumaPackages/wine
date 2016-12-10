@@ -18,8 +18,8 @@
 %endif
 
 Name:           wine
-Version:        1.9.23
-Release:        7%{?dist}
+Version:        1.9.24
+Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
@@ -66,9 +66,11 @@ Source502:      wine-README-tahoma
 
 Patch511:       wine-cjk.patch
 
+%if 0%{compholio}
 # wine compholio patches for wine-staging
 # pulseaudio-patch is covered by that patch-set, too.
 Source900: https://github.com/compholio/wine-compholio/archive/v%{version}.tar.gz#/wine-staging-%{version}.tar.gz
+%endif # 0%{compholio}
 
 %if !%{?no64bit}
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
@@ -656,9 +658,9 @@ This package adds the opencl driver for wine.
 %setup -q -n wine-%{version}
 %patch511 -p1 -b.cjk
 
+%if 0%{?compholio}
 # setup and apply wine-staging patches
 gzip -dc %{SOURCE900} | tar -xf - --strip-components=1
-%if 0%{?compholio}
 
 make -C patches DESTDIR="`pwd`" install
 
@@ -1133,6 +1135,15 @@ fi
 %{_libdir}/wine/advapi32.dll.so
 %{_libdir}/wine/advpack.dll.so
 %{_libdir}/wine/amstream.dll.so
+%{_libdir}/wine/api-ms-win-appmodel-identity-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-com-private-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-devices-config-l1-1-1.dll.so
+%{_libdir}/wine/api-ms-win-devices-query-l1-1-1.dll.so
+%{_libdir}/wine/api-ms-win-power-base-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-power-setting-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-security-lsalookup-l2-1-1.dll.so
+%{_libdir}/wine/api-ms-win-security-lsapolicy-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-domainjoin-netjoin-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-appcompat-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-core-appinit-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-atoms-l1-1-0.dll.so
@@ -2073,6 +2084,9 @@ fi
 %endif
 
 %changelog
+* Sat Dec 10 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.24-1
+- Update to latest upstream release
+
 * Fri Dec 09 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.23-7
 - Disable compholio
 
