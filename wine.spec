@@ -7,7 +7,7 @@
 #global _default_patch_fuzz 2
 
 # build with compholio-patches, see:  http://www.compholio.com/wine-compholio/
-%global compholio 0
+%global compholio 1
 
 # binfmt macros for RHEL
 %if 0%{?rhel} == 7
@@ -17,16 +17,30 @@
 %{nil}
 %endif
 
+%global rcver 1
+%if 0%{?rcver:1}
+%global rctag -rc%{?rcver}
+%endif
+
 Name:           wine
-Version:        1.9.24
+Version:        2.0
+%if 0%{!?rcver:1}
 Release:        1%{?dist}
+%else
+Release:        1.rc%{rcver}%{?dist}
+%endif
 Summary:        A compatibility layer for windows applications
 
 Group:          Applications/Emulators
 License:        LGPLv2+
 URL:            http://www.winehq.org/
+%if 0%{!?rcver:1}
 Source0:        http://downloads.sourceforge.net/wine/wine-%{version}.tar.bz2
 Source10:       http://downloads.sourceforge.net/wine/wine-%{version}.tar.bz2.sign
+%else
+Source0:        http://downloads.sourceforge.net/wine/wine-%{version}%{rctag}.tar.bz2
+Source10:       http://downloads.sourceforge.net/wine/wine-%{version}%{rctag}.tar.bz2.sign
+%endif
 
 Source1:        wine.init
 Source2:        wine.systemd
@@ -69,7 +83,11 @@ Patch511:       wine-cjk.patch
 %if 0%{compholio}
 # wine compholio patches for wine-staging
 # pulseaudio-patch is covered by that patch-set, too.
+%if 0%{!?rcver:1}
 Source900: https://github.com/compholio/wine-compholio/archive/v%{version}.tar.gz#/wine-staging-%{version}.tar.gz
+%else
+Source900: https://github.com/compholio/wine-compholio/archive/v%{version}%{rctag}.tar.gz#/wine-staging-%{version}%{rctag}.tar.gz
+%endif
 %endif # 0%{compholio}
 
 %if !%{?no64bit}
@@ -655,7 +673,11 @@ This package adds the opencl driver for wine.
 %endif
 
 %prep
+%if 0%{!?rcver:1}
 %setup -q -n wine-%{version}
+%else
+%setup -q -n wine-%{version}%{rctag}
+%endif
 %patch511 -p1 -b.cjk
 
 %if 0%{?compholio}
@@ -2084,6 +2106,10 @@ fi
 %endif
 
 %changelog
+* Sat Dec 17 2016 Jajauma's Packages <jajauma@yandex.ru> - 2.0-1.rc1
+- Update to latest upstream release
+- Rebuilt with wine-staging patches
+
 * Sat Dec 10 2016 Jajauma's Packages <jajauma@yandex.ru> - 1.9.24-1
 - Update to latest upstream release
 
