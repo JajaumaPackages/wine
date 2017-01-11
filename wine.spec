@@ -17,7 +17,7 @@
 %{nil}
 %endif
 
-%global rcver 3
+%global rcver 4
 %if 0%{?rcver:1}
 %global rctag -rc%{?rcver}
 %endif
@@ -2106,7 +2106,10 @@ fi
 %endif
 
 %changelog
-* Wed Jan 04 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-3.rc1
+* Wed Jan 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-1.rc4
+- Update to latest upstream release
+
+* Wed Jan 04 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-3.rc3
 - Update to latest upstream release
 - Rebuilt with wine-staging patches
 
