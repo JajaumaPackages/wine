@@ -17,7 +17,7 @@
 %{nil}
 %endif
 
-%global rcver 4
+%global rcver 5
 %if 0%{?rcver:1}
 %global rctag -rc%{?rcver}
 %endif
@@ -2106,6 +2106,9 @@ fi
 %endif
 
 %changelog
+* Mon Jan 16 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-1.rc5
+- Update to latest upstream release
+
 * Wed Jan 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-1.rc4
 - Update to latest upstream release
 
