@@ -21,11 +21,10 @@
 %global rctag -rc%{?rcver}
 %endif
 
-Epoch:          2
 Name:           wine
 Version:        2.0
 %if 0%{!?rcver:1}
-Release:        1%{?dist}
+Release:        2%{?dist}
 %else
 Release:        1.rc%{rcver}%{?dist}
 %endif
@@ -2106,9 +2105,8 @@ fi
 %endif
 
 %changelog
-* Thu Jan 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.0-1
+* Thu Jan 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-2
 - Update to latest upstream release
-- Bump Epoch to allow update from -rcX
 
 * Mon Jan 23 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-1.rc6
 - Update to latest upstream release
