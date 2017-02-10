@@ -1511,6 +1511,7 @@ fi
 %{_libdir}/wine/mciseq.dll.so
 %{_libdir}/wine/mciwave.dll.so
 %{_libdir}/wine/mf.dll.so
+%{_libdir}/wine/mf3216.dll.so
 %{_libdir}/wine/mfplat.dll.so
 %{_libdir}/wine/mfreadwrite.dll.so
 %{_libdir}/wine/mgmtapi.dll.so
@@ -1653,6 +1654,7 @@ fi
 %{_libdir}/wine/scarddlg.dll.so
 %{_libdir}/wine/sccbase.dll.so
 %{_libdir}/wine/schannel.dll.so
+%{_libdir}/wine/scrobj.dll.so
 %{_libdir}/wine/scrrun.dll.so
 %{_libdir}/wine/scsiport.sys.so
 %{_libdir}/wine/secur32.dll.so
@@ -1750,6 +1752,7 @@ fi
 %{_libdir}/wine/winnls32.dll.so
 %{_libdir}/wine/winspool.drv.so
 %{_libdir}/wine/winsta.dll.so
+%{_libdir}/wine/winusb.dll.so
 %{_libdir}/wine/wmasf.dll.so
 %{_libdir}/wine/wmi.dll.so
 %{_libdir}/wine/wmic.exe.so
@@ -2108,6 +2111,7 @@ fi
 * Fri Feb 10 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.1-1
 - Update to latest upstream release
 - Set source URLs to wine D/L server
+- Package new libraries (mf3216.dll.so, scrobj.dll.so, winusb.dll.so)
 
 * Thu Jan 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-2
 - Update to latest upstream release
