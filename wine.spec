@@ -22,9 +22,9 @@
 %endif
 
 Name:           wine
-Version:        2.0
+Version:        2.1
 %if 0%{!?rcver:1}
-Release:        2%{?dist}
+Release:        1%{?dist}
 %else
 Release:        1.rc%{rcver}%{?dist}
 %endif
@@ -34,8 +34,8 @@ Group:          Applications/Emulators
 License:        LGPLv2+
 URL:            http://www.winehq.org/
 %if 0%{!?rcver:1}
-Source0:        http://downloads.sourceforge.net/wine/wine-%{version}.tar.bz2
-Source10:       http://downloads.sourceforge.net/wine/wine-%{version}.tar.bz2.sign
+Source0:        http://dl.winehq.org/wine/source/2.x/wine-%{version}.tar.xz
+Source10:       http://dl.winehq.org/wine/source/2.x/wine-%{version}.tar.xz.sign
 %else
 Source0:        http://downloads.sourceforge.net/wine/wine-%{version}%{rctag}.tar.bz2
 Source10:       http://downloads.sourceforge.net/wine/wine-%{version}%{rctag}.tar.bz2.sign
@@ -2105,6 +2105,10 @@ fi
 %endif
 
 %changelog
+* Fri Feb 10 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.1-1
+- Update to latest upstream release
+- Set source URLs to wine D/L server
+
 * Thu Jan 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.0-2
 - Update to latest upstream release
 
