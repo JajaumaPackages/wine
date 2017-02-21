@@ -22,7 +22,7 @@
 %endif
 
 Name:           wine
-Version:        2.1
+Version:        2.2
 %if 0%{!?rcver:1}
 Release:        1%{?dist}
 %else
@@ -2108,6 +2108,9 @@ fi
 %endif
 
 %changelog
+* Tue Feb 21 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.2-1
+- Update to latest upstream release
+
 * Fri Feb 10 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.1-1
 - Update to latest upstream release
 - Set source URLs to wine D/L server
