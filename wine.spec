@@ -1719,6 +1719,7 @@ fi
 %{_libdir}/wine/vcruntime140.dll.so
 %{_libdir}/wine/vdmdbg.dll.so
 %{_libdir}/wine/version.dll.so
+%{_libdir}/wine/virtdisk.dll.so
 %{_libdir}/wine/vssapi.dll.so
 %if 0%{?compholio}
 %{_libdir}/wine/vulkan-1.dll.so
@@ -2110,6 +2111,7 @@ fi
 %changelog
 * Tue Feb 21 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.2-1
 - Update to latest upstream release
+- Package new library (virtdisk.dll.so)
 
 * Fri Feb 10 2017 Jajauma's Packages <jajauma@yandex.ru> - 2.1-1
 - Update to latest upstream release
