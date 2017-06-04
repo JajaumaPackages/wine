@@ -29,6 +29,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext
 
+BuildRequires:  cairo-devel%{?_isa}
 BuildRequires:  cups-devel%{?_isa}
 BuildRequires:  dbus-devel%{?_isa}
 BuildRequires:  fontconfig-devel%{?_isa}
@@ -36,6 +37,7 @@ BuildRequires:  freetype-devel%{?_isa}
 BuildRequires:  glib2-devel%{?_isa}
 BuildRequires:  gnutls-devel%{?_isa}
 BuildRequires:  gsm-devel%{?_isa}
+BuildRequires:  gstreamer1-devel%{?_isa}
 BuildRequires:  gstreamer1-plugins-base-devel%{?_isa}
 BuildRequires:  isdn4k-utils-devel%{?_isa}
 BuildRequires:  lcms2-devel%{?_isa}
@@ -57,6 +59,7 @@ BuildRequires:  libpng-devel%{?_isa}
 BuildRequires:  libv4l-devel%{?_isa}
 BuildRequires:  libxml2-devel%{?_isa}
 BuildRequires:  libxslt-devel%{?_isa}
+BuildRequires:  mesa-libGL-devel%{?_isa}
 BuildRequires:  mesa-libGLU-devel%{?_isa}
 BuildRequires:  mesa-libOSMesa-devel%{?_isa}
 BuildRequires:  ncurses-devel%{?_isa}
@@ -84,6 +87,7 @@ BuildRequires:  openal-soft-devel%{?_isa}
 %endif
 
 %ifarch x86_64
+BuildRequires:  cairo-devel(x86-32)
 BuildRequires:  cups-devel(x86-32)
 BuildRequires:  dbus-devel(x86-32)
 BuildRequires:  fontconfig-devel(x86-32)
@@ -92,6 +96,7 @@ BuildRequires:  glib2-devel(x86-32)
 BuildRequires:  glibc-devel(x86-32)
 BuildRequires:  gnutls-devel(x86-32)
 BuildRequires:  gsm-devel(x86-32)
+BuildRequires:  gstreamer1-devel(x86-32)
 BuildRequires:  gstreamer1-plugins-base-devel(x86-32)
 BuildRequires:  isdn4k-utils-devel(x86-32)
 BuildRequires:  lcms2-devel(x86-32)
@@ -113,6 +118,7 @@ BuildRequires:  libpng-devel(x86-32)
 BuildRequires:  libv4l-devel(x86-32)
 BuildRequires:  libxml2-devel(x86-32)
 BuildRequires:  libxslt-devel(x86-32)
+BuildRequires:  mesa-libGL-devel(x86-32)
 BuildRequires:  mesa-libGLU-devel(x86-32)
 BuildRequires:  mesa-libOSMesa-devel(x86-32)
 BuildRequires:  ncurses-devel(x86-32)
