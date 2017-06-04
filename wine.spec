@@ -3,7 +3,8 @@
 %endif
 
 # The features are enabled by default. Run rpmbuild with '--without <feature>'
-# command line switch(es) to disable them selectively.
+# command line switch(es) to disable them selectively. Otherwise, one might
+# change 'bcond_without' to 'bcond_with' to invert the defaults.
 %bcond_without staging
 %bcond_without mpg123
 %bcond_without opencl
@@ -24,7 +25,9 @@ Source1:        https://github.com/wine-compholio/wine-staging/archive/v%{versio
 
 ExclusiveArch:  %{ix86} x86_64
 
+BuildRequires:  bison
 BuildRequires:  flex
+
 BuildRequires:  cups-devel
 BuildRequires:  dbus-devel
 BuildRequires:  fontconfig-devel
@@ -119,8 +122,6 @@ BuildRequires:  ocl-icd-devel(x86-32)
 BuildRequires:  openal-soft-devel(x86-32)
 %endif
 %endif
-
-# Requires:       
 
 %description
 Wine as a compatibility layer for UNIX to run Windows applications. This
