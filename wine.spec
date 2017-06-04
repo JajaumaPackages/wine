@@ -29,51 +29,58 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext
 
-BuildRequires:  cups-devel
-BuildRequires:  dbus-devel
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype-devel
-BuildRequires:  gnutls-devel
-BuildRequires:  gsm-devel
-BuildRequires:  gstreamer1-plugins-base-devel
-BuildRequires:  isdn4k-utils-devel
-BuildRequires:  lcms2-devel
-BuildRequires:  libX11-devel
-BuildRequires:  libXcomposite-devel
-BuildRequires:  libXcursor-devel
-BuildRequires:  libXi-devel
-BuildRequires:  libXinerama-devel
-BuildRequires:  libXrandr-devel
-BuildRequires:  libXxf86vm-devel
-BuildRequires:  libgphoto2-devel
-BuildRequires:  libpcap-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libv4l-devel
-BuildRequires:  libxslt-devel
-BuildRequires:  mesa-libGLU-devel
-BuildRequires:  mesa-libOSMesa-devel
-BuildRequires:  ncurses-devel
-BuildRequires:  openldap-devel
-BuildRequires:  pulseaudio-libs-devel
-BuildRequires:  sane-backends-devel
-BuildRequires:  systemd-devel
+BuildRequires:  cups-devel%{?_isa}
+BuildRequires:  dbus-devel%{?_isa}
+BuildRequires:  fontconfig-devel%{?_isa}
+BuildRequires:  freetype-devel%{?_isa}
+BuildRequires:  glib2-devel%{?_isa}
+BuildRequires:  gnutls-devel%{?_isa}
+BuildRequires:  gsm-devel%{?_isa}
+BuildRequires:  gstreamer1-plugins-base-devel%{?_isa}
+BuildRequires:  isdn4k-utils-devel%{?_isa}
+BuildRequires:  lcms2-devel%{?_isa}
+BuildRequires:  libX11-devel%{?_isa}
+BuildRequires:  libXcomposite-devel%{?_isa}
+BuildRequires:  libXcursor-devel%{?_isa}
+BuildRequires:  libXext-devel%{?_isa}
+BuildRequires:  libXfixes-devel%{?_isa}
+BuildRequires:  libXi-devel%{?_isa}
+BuildRequires:  libXinerama-devel%{?_isa}
+BuildRequires:  libXrandr-devel%{?_isa}
+BuildRequires:  libXrender-devel%{?_isa}
+BuildRequires:  libXxf86vm-devel%{?_isa}
+BuildRequires:  libexif-devel%{?_isa}
+BuildRequires:  libgphoto2-devel%{?_isa}
+BuildRequires:  libjpeg-turbo-devel%{?_isa}
+BuildRequires:  libpcap-devel%{?_isa}
+BuildRequires:  libpng-devel%{?_isa}
+BuildRequires:  libv4l-devel%{?_isa}
+BuildRequires:  libxml2-devel%{?_isa}
+BuildRequires:  libxslt-devel%{?_isa}
+BuildRequires:  mesa-libGLU-devel%{?_isa}
+BuildRequires:  mesa-libOSMesa-devel%{?_isa}
+BuildRequires:  ncurses-devel%{?_isa}
+BuildRequires:  openldap-devel%{?_isa}
+BuildRequires:  pulseaudio-libs-devel%{?_isa}
+BuildRequires:  sane-backends-devel%{?_isa}
+BuildRequires:  systemd-devel%{?_isa}
 
 %if %{with staging}
-BuildRequires:  gtk3-devel
-BuildRequires:  libva-devel
+BuildRequires:  gtk3-devel%{?_isa}
+BuildRequires:  libva-devel%{?_isa}
 %endif
 
 %if %{with mpg123}
-BuildRequires:  mpg123-devel
+BuildRequires:  mpg123-devel%{?_isa}
 %endif
 
 %if %{with opencl}
-BuildRequires:  ocl-icd-devel
+BuildRequires:  ocl-icd-devel%{?_isa}
 BuildRequires:  opencl-headers
 %endif
 
 %if %{with openal}
-BuildRequires:  openal-soft-devel
+BuildRequires:  openal-soft-devel%{?_isa}
 %endif
 
 %ifarch x86_64
