@@ -239,6 +239,9 @@ popd
 %{_bindir}/winemine
 %{_bindir}/winepath
 %{_bindir}/wineserver
+%if %{with staging}
+%{_bindir}/msidb
+%endif
 # }}}
 %{_libdir}/libwine.so.*
 %dir %{_libdir}/wine/
@@ -969,12 +972,43 @@ popd
 %{_libdir}/wine/xolehlp.dll.so
 %{_libdir}/wine/xpsprint.dll.so
 %{_libdir}/wine/xpssvcs.dll.so
+
+%if %{with staging}
+%{_libdir}/wine/api-ms-win-core-heap-l2-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-shlwapi-obsolete-l1-2-0.dll.so
+%{_libdir}/wine/api-ms-win-rtcore-ntuser-draw-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-rtcore-ntuser-window-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-shcore-obsolete-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-shcore-stream-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-shcore-thread-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-appmodel-usercontext-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-ntuser-mouse-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-rtcore-ntuser-syscolors-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-uxtheme-themes-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-xaml-pal-l1-1-0.dll.so
+%{_libdir}/wine/feclient.dll.so
+%{_libdir}/wine/iertutil.dll.so
+%{_libdir}/wine/msidb.exe.so
+%{_libdir}/wine/nvapi64.dll.so
+%{_libdir}/wine/nvcuda.dll.so
+%{_libdir}/wine/nvcuvid.dll.so
+%{_libdir}/wine/nvencodeapi64.dll.so
+%{_libdir}/wine/shcore.dll.so
+%{_libdir}/wine/uxtheme-gtk.dll.so
+%{_libdir}/wine/vulkan-1.dll.so
+%{_libdir}/wine/vulkan.dll.so
+%{_libdir}/wine/wined3d-csmt.dll.so
+%{_libdir}/wine/wuauserv.exe.so
+%endif
+
 %if %{with mpg123}
 %{_libdir}/wine/winemp3.acm.so
 %endif
+
 %if %{with opencl}
 %{_libdir}/wine/opencl.dll.so
 %endif
+
 %if %{with openal}
 %{_libdir}/wine/openal32.dll.so
 %{_libdir}/wine/x3daudio1_0.dll.so
@@ -1797,12 +1831,42 @@ popd
 %{lib32dir}/wine/xolehlp.dll.so
 %{lib32dir}/wine/xpsprint.dll.so
 %{lib32dir}/wine/xpssvcs.dll.so
+
+%if %{with staging}
+%{lib32dir}/wine/api-ms-win-core-heap-l2-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-core-shlwapi-obsolete-l1-2-0.dll.so
+%{lib32dir}/wine/api-ms-win-rtcore-ntuser-draw-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-rtcore-ntuser-window-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-shcore-obsolete-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-shcore-stream-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-shcore-thread-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-appmodel-usercontext-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-ntuser-mouse-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-rtcore-ntuser-syscolors-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-uxtheme-themes-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-xaml-pal-l1-1-0.dll.so
+%{lib32dir}/wine/feclient.dll.so
+%{lib32dir}/wine/iertutil.dll.so
+%{lib32dir}/wine/msidb.exe.so
+%{lib32dir}/wine/nvapi.dll.so
+%{lib32dir}/wine/nvcuda.dll.so
+%{lib32dir}/wine/nvcuvid.dll.so
+%{lib32dir}/wine/nvencodeapi.dll.so
+%{lib32dir}/wine/shcore.dll.so
+%{lib32dir}/wine/vulkan-1.dll.so
+%{lib32dir}/wine/vulkan.dll.so
+%{lib32dir}/wine/wined3d-csmt.dll.so
+%{lib32dir}/wine/wuauserv.exe.so
+%endif
+
 %if %{with mpg123}
 %{lib32dir}/wine/winemp3.acm.so
 %endif
+
 %if %{with opencl}
 %{lib32dir}/wine/opencl.dll.so
 %endif
+
 %if %{with openal}
 %{lib32dir}/wine/openal32.dll.so
 %{lib32dir}/wine/x3daudio1_0.dll.so
