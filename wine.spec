@@ -24,6 +24,7 @@ Source1:        https://github.com/wine-compholio/wine-staging/archive/v%{versio
 
 ExclusiveArch:  %{ix86} x86_64
 
+BuildRequires:  flex
 BuildRequires:  cups-devel
 BuildRequires:  dbus-devel
 BuildRequires:  fontconfig-devel
