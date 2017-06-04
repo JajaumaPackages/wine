@@ -130,7 +130,7 @@ if they are available.
 
 %package devel
 Summary:        Wine development environment
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{?epoch:%{epoch}:}%{version}-%{release}
 
 %description devel
 Header, include files and library definition files for developing applications
