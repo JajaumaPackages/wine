@@ -2,6 +2,8 @@
 %global lib32dir %{_prefix}/lib
 %endif
 
+# The features are enabled by default. Run rpmbuild with '--without <feature>'
+# command line switch(es) to disable them selectively.
 %bcond_without staging
 %bcond_without mpg123
 %bcond_without opencl
@@ -156,7 +158,11 @@ export CFLAGS="$(echo %{__global_cflags} | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//')
 export LDFLAGS="%{__global_ldflags}"
 
 pushd wine64-build
-../configure --enable-win64 \
+../configure \
+    --enable-win64 \
+    %{?_without_mpg123} \
+    %{?_without_opencl} \
+    %{?_without_openal} \
     --program-prefix=%{?_program_prefix} \
     --prefix=%{_prefix} \
     --exec-prefix=%{_exec_prefix} \
@@ -177,6 +183,9 @@ popd
 pushd wine32-build
 PKG_CONFIG_PATH=%{lib32dir}/pkgconfig/ ../configure \
     --with-wine64=../wine64-build/ \
+    %{?_without_mpg123} \
+    %{?_without_opencl} \
+    %{?_without_openal} \
     --program-prefix=%{?_program_prefix} \
     --prefix=%{_prefix} \
     --exec-prefix=%{_exec_prefix} \
@@ -196,7 +205,10 @@ popd
 %endif
 
 %ifarch %{ix86}
-%configure
+%configure \
+    %{?_without_mpg123} \
+    %{?_without_opencl} \
+    %{?_without_openal}
 make %{?_smp_mflags}
 %endif
 
