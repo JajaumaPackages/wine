@@ -1,5 +1,4 @@
-CURDIR = $(shell pwd)
-PACKAGE = $(lastword $(subst /, , $(CURDIR)))
-
+default: sources
+	rpmbuild -ba *.spec -D "_sourcedir ${CURDIR}"
 sources:
-	spectool --get-files $(PACKAGE).spec
+	spectool --get-files *.spec
