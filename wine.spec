@@ -56,6 +56,7 @@ BuildRequires:  libgphoto2-devel%{?_isa}
 BuildRequires:  libjpeg-turbo-devel%{?_isa}
 BuildRequires:  libpcap-devel%{?_isa}
 BuildRequires:  libpng-devel%{?_isa}
+BuildRequires:  libtiff-devel%{?_isa}
 BuildRequires:  libv4l-devel%{?_isa}
 BuildRequires:  libxml2-devel%{?_isa}
 BuildRequires:  libxslt-devel%{?_isa}
@@ -115,6 +116,7 @@ BuildRequires:  libgphoto2-devel(x86-32)
 BuildRequires:  libjpeg-turbo-devel(x86-32)
 BuildRequires:  libpcap-devel(x86-32)
 BuildRequires:  libpng-devel(x86-32)
+BuildRequires:  libtiff-devel(x86-32)
 BuildRequires:  libv4l-devel(x86-32)
 BuildRequires:  libxml2-devel(x86-32)
 BuildRequires:  libxslt-devel(x86-32)
