@@ -29,6 +29,7 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext
 
+BuildRequires:  alsa-lib-devel%{?_isa}
 BuildRequires:  cairo-devel%{?_isa}
 BuildRequires:  cups-devel%{?_isa}
 BuildRequires:  dbus-devel%{?_isa}
@@ -88,6 +89,7 @@ BuildRequires:  openal-soft-devel%{?_isa}
 %endif
 
 %ifarch x86_64
+BuildRequires:  alsa-lib-devel(x86-32)
 BuildRequires:  cairo-devel(x86-32)
 BuildRequires:  cups-devel(x86-32)
 BuildRequires:  dbus-devel(x86-32)
