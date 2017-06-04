@@ -1893,6 +1893,7 @@ popd
 %{lib32dir}/wine/nvcuvid.dll.so
 %{lib32dir}/wine/nvencodeapi.dll.so
 %{lib32dir}/wine/shcore.dll.so
+%{lib32dir}/wine/uxtheme-gtk.dll.so
 %{lib32dir}/wine/vulkan-1.dll.so
 %{lib32dir}/wine/vulkan.dll.so
 %{lib32dir}/wine/wined3d-csmt.dll.so
