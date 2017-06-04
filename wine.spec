@@ -27,6 +27,7 @@ ExclusiveArch:  %{ix86} x86_64
 
 BuildRequires:  bison
 BuildRequires:  flex
+BuildRequires:  gettext
 
 BuildRequires:  cups-devel
 BuildRequires:  dbus-devel
