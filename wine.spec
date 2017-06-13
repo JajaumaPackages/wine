@@ -1024,6 +1024,8 @@ popd
 %{_libdir}/wine/api-ms-win-shcore-obsolete-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-shcore-stream-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-shcore-thread-l1-1-0.dll.so
+%{_libdir}/wine/dxgkrnl.sys.so
+%{_libdir}/wine/dxgmms1.sys.so
 %{_libdir}/wine/ext-ms-win-appmodel-usercontext-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-mouse-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-syscolors-l1-1-0.dll.so
@@ -1040,6 +1042,7 @@ popd
 %{_libdir}/wine/uxtheme-gtk.dll.so
 %{_libdir}/wine/vulkan-1.dll.so
 %{_libdir}/wine/vulkan.dll.so
+%{_libdir}/wine/win32k.sys.so
 %{_libdir}/wine/wined3d-csmt.dll.so
 %{_libdir}/wine/wuauserv.exe.so
 %endif
@@ -1886,6 +1889,8 @@ popd
 %{lib32dir}/wine/api-ms-win-shcore-obsolete-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-shcore-stream-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-shcore-thread-l1-1-0.dll.so
+%{lib32dir}/wine/dxgkrnl.sys.so
+%{lib32dir}/wine/dxgmms1.sys.so
 %{lib32dir}/wine/ext-ms-win-appmodel-usercontext-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-ntuser-mouse-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-rtcore-ntuser-syscolors-l1-1-0.dll.so
@@ -1902,6 +1907,7 @@ popd
 %{lib32dir}/wine/uxtheme-gtk.dll.so
 %{lib32dir}/wine/vulkan-1.dll.so
 %{lib32dir}/wine/vulkan.dll.so
+%{lib32dir}/wine/win32k.sys.so
 %{lib32dir}/wine/wined3d-csmt.dll.so
 %{lib32dir}/wine/wuauserv.exe.so
 %endif
