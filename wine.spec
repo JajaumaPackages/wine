@@ -12,7 +12,7 @@
 
 Name:           wine
 Epoch:          2
-Version:        2.10
+Version:        2.11
 Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
@@ -306,6 +306,8 @@ popd
 %{_libdir}/wine/api-ms-win-core-com-private-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-console-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-console-l2-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-crt-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-crt-l2-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-datetime-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-datetime-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-core-debug-l1-1-0.dll.so
@@ -449,6 +451,7 @@ popd
 %{_libdir}/wine/api-ms-win-security-base-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-security-base-l1-2-0.dll.so
 %{_libdir}/wine/api-ms-win-security-base-private-l1-1-1.dll.so
+%{_libdir}/wine/api-ms-win-security-credentials-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-security-grouppolicy-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-security-lsalookup-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-security-lsalookup-l1-1-1.dll.so
@@ -1108,6 +1111,8 @@ popd
 %{lib32dir}/wine/api-ms-win-core-com-private-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-console-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-console-l2-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-core-crt-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-core-crt-l2-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-datetime-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-datetime-l1-1-1.dll.so
 %{lib32dir}/wine/api-ms-win-core-debug-l1-1-0.dll.so
@@ -1251,6 +1256,7 @@ popd
 %{lib32dir}/wine/api-ms-win-security-base-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-base-l1-2-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-base-private-l1-1-1.dll.so
+%{lib32dir}/wine/api-ms-win-security-credentials-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-grouppolicy-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-lsalookup-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-lsalookup-l1-1-1.dll.so
@@ -2012,6 +2018,12 @@ popd
 
 
 %changelog
+* Wed Jun 28 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.11-1
+- Update to latest upstream release
+- Package new libraries (api-ms-win-core-crt-l1-1-0.dll.so,
+  api-ms-win-core-crt-l2-1-0.dll.so,
+  api-ms-win-security-credentials-l1-1-0.dll.so)
+
 * Sun Jun 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.10-1
 - Update to latest upstream release
 
