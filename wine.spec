@@ -11,8 +11,8 @@
 %bcond_without openal
 
 Name:           wine
-Epoch:          2
-Version:        2.11
+Epoch:          1
+Version:        2.12
 Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
@@ -627,16 +627,21 @@ popd
 %{_libdir}/wine/ext-ms-win-gdi-draw-l1-1-1.dll.so
 %{_libdir}/wine/ext-ms-win-gdi-render-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-kernel32-package-current-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-kernel32-package-l1-1-1.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-message-l1-1-1.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-private-l1-1-1.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-rectangle-ext-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-uicontext-ext-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-ntuser-window-l1-1-1.dll.so
+%{_libdir}/wine/ext-ms-win-ntuser-windowclass-l1-1-1.dll.so
+%{_libdir}/wine/ext-ms-win-ras-rasapi32-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-gdi-object-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-gdi-rgn-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-dc-access-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-dpi-l1-1-0.dll.so
 %{_libdir}/wine/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-security-credui-l1-1-0.dll.so
+%{_libdir}/wine/ext-ms-win-security-cryptui-l1-1-0.dll.so
 %{_libdir}/wine/extrac32.exe.so
 %{_libdir}/wine/faultrep.dll.so
 %{_libdir}/wine/findstr.exe.so
@@ -1441,16 +1446,21 @@ popd
 %{lib32dir}/wine/ext-ms-win-gdi-draw-l1-1-1.dll.so
 %{lib32dir}/wine/ext-ms-win-gdi-render-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-kernel32-package-current-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-kernel32-package-l1-1-1.dll.so
 %{lib32dir}/wine/ext-ms-win-ntuser-message-l1-1-1.dll.so
 %{lib32dir}/wine/ext-ms-win-ntuser-private-l1-1-1.dll.so
 %{lib32dir}/wine/ext-ms-win-ntuser-rectangle-ext-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-ntuser-uicontext-ext-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-ntuser-window-l1-1-1.dll.so
+%{lib32dir}/wine/ext-ms-win-ntuser-windowclass-l1-1-1.dll.so
+%{lib32dir}/wine/ext-ms-win-ras-rasapi32-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-rtcore-gdi-object-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-rtcore-gdi-rgn-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-rtcore-ntuser-dc-access-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-rtcore-ntuser-dpi-l1-1-0.dll.so
 %{lib32dir}/wine/ext-ms-win-rtcore-ntuser-sysparams-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-security-credui-l1-1-0.dll.so
+%{lib32dir}/wine/ext-ms-win-security-cryptui-l1-1-0.dll.so
 %{lib32dir}/wine/extrac32.exe.so
 %{lib32dir}/wine/faultrep.dll.so
 %{lib32dir}/wine/findstr.exe.so
@@ -2018,6 +2028,9 @@ popd
 
 
 %changelog
+* Wed Jul 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 1:2.12-1
+- Update to latest upstream release
+
 * Wed Jun 28 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.11-1
 - Update to latest upstream release
 - Package new libraries (api-ms-win-core-crt-l1-1-0.dll.so,
