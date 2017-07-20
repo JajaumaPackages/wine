@@ -11,9 +11,9 @@
 %bcond_without openal
 
 Name:           wine
-Epoch:          1
+Epoch:          2
 Version:        2.12
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A compatibility layer for windows applications
 
 License:        LGPLv2.1+
@@ -2028,6 +2028,9 @@ popd
 
 
 %changelog
+* Thu Jul 20 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.12-2
+- Fix broken Epoch (must be 2)
+
 * Wed Jul 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 1:2.12-1
 - Update to latest upstream release
 
