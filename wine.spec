@@ -12,8 +12,8 @@
 
 Name:           wine
 Epoch:          2
-Version:        2.12
-Release:        2%{?dist}
+Version:        2.13
+Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
 License:        LGPLv2.1+
@@ -365,6 +365,7 @@ popd
 %{_libdir}/wine/api-ms-win-core-processthreads-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-core-processthreads-l1-1-2.dll.so
 %{_libdir}/wine/api-ms-win-core-profile-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-core-psapi-ansi-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-psapi-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-psapi-obsolete-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-quirks-l1-1-0.dll.so
@@ -442,6 +443,7 @@ popd
 %{_libdir}/wine/api-ms-win-eventlog-legacy-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-mm-misc-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-mm-mme-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-mm-time-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-ntuser-dc-access-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-power-base-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-power-setting-l1-1-0.dll.so
@@ -457,6 +459,7 @@ popd
 %{_libdir}/wine/api-ms-win-security-lsalookup-l1-1-1.dll.so
 %{_libdir}/wine/api-ms-win-security-lsalookup-l2-1-1.dll.so
 %{_libdir}/wine/api-ms-win-security-lsapolicy-l1-1-0.dll.so
+%{_libdir}/wine/api-ms-win-security-provider-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-security-sddl-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-security-systemfunctions-l1-1-0.dll.so
 %{_libdir}/wine/api-ms-win-service-core-l1-1-0.dll.so
@@ -832,6 +835,7 @@ popd
 %{_libdir}/wine/pidgen.dll.so
 %{_libdir}/wine/ping.exe.so
 %{_libdir}/wine/plugplay.exe.so
+%{_libdir}/wine/powershell.exe.so
 %{_libdir}/wine/powrprof.dll.so
 %{_libdir}/wine/presentationfontcache.exe.so
 %{_libdir}/wine/printui.dll.so
@@ -1175,6 +1179,7 @@ popd
 %{lib32dir}/wine/api-ms-win-core-processthreads-l1-1-1.dll.so
 %{lib32dir}/wine/api-ms-win-core-processthreads-l1-1-2.dll.so
 %{lib32dir}/wine/api-ms-win-core-profile-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-core-psapi-ansi-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-psapi-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-psapi-obsolete-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-core-quirks-l1-1-0.dll.so
@@ -1252,6 +1257,7 @@ popd
 %{lib32dir}/wine/api-ms-win-eventlog-legacy-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-mm-misc-l1-1-1.dll.so
 %{lib32dir}/wine/api-ms-win-mm-mme-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-mm-time-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-ntuser-dc-access-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-power-base-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-power-setting-l1-1-0.dll.so
@@ -1267,6 +1273,7 @@ popd
 %{lib32dir}/wine/api-ms-win-security-lsalookup-l1-1-1.dll.so
 %{lib32dir}/wine/api-ms-win-security-lsalookup-l2-1-1.dll.so
 %{lib32dir}/wine/api-ms-win-security-lsapolicy-l1-1-0.dll.so
+%{lib32dir}/wine/api-ms-win-security-provider-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-sddl-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-security-systemfunctions-l1-1-0.dll.so
 %{lib32dir}/wine/api-ms-win-service-core-l1-1-0.dll.so
@@ -1671,6 +1678,7 @@ popd
 %{lib32dir}/wine/pidgen.dll.so
 %{lib32dir}/wine/ping.exe.so
 %{lib32dir}/wine/plugplay.exe.so
+%{lib32dir}/wine/powershell.exe.so
 %{lib32dir}/wine/powrprof.dll.so
 %{lib32dir}/wine/presentationfontcache.exe.so
 %{lib32dir}/wine/printui.dll.so
@@ -2028,6 +2036,9 @@ popd
 
 
 %changelog
+* Wed Jul 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-1
+- Update to latest upstream release
+
 * Thu Jul 20 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.12-2
 - Fix broken Epoch (must be 2)
 
