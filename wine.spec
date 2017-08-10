@@ -13,7 +13,7 @@
 Name:           wine
 Epoch:          2
 Version:        2.13
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A compatibility layer for windows applications
 
 License:        LGPLv2.1+
@@ -175,9 +175,6 @@ make -C patches DESTDIR="$(pwd)" install
 
 
 %build
-%ifarch x86_64
-mkdir wine{32,64}-build
-
 # Export some of distribution factory compiler flags manually. Try not to
 # export any machine flags (e.g. -m64) as those would break side-by-side WoW64
 # building. Exporting -D_FORTIFY_SOURCE=2 issues some (non-fatal) complaints as
@@ -185,6 +182,8 @@ mkdir wine{32,64}-build
 export CFLAGS="$(echo %{__global_cflags} | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//')"
 export LDFLAGS="%{__global_ldflags}"
 
+%ifarch x86_64
+mkdir wine{32,64}-build
 pushd wine64-build
 ../configure \
     --enable-win64 \
@@ -233,10 +232,24 @@ popd
 %endif
 
 %ifarch %{ix86}
-%configure \
+./configure \
     %{?_without_mpg123} \
     %{?_without_opencl} \
-    %{?_without_openal}
+    %{?_without_openal} \
+    --program-prefix=%{?_program_prefix} \
+    --prefix=%{_prefix} \
+    --exec-prefix=%{_exec_prefix} \
+    --bindir=%{_bindir} \
+    --sbindir=%{_sbindir} \
+    --sysconfdir=%{_sysconfdir} \
+    --datadir=%{_datadir} \
+    --includedir=%{_includedir} \
+    --libdir=%{_libdir} \
+    --libexecdir=%{_libexecdir} \
+    --localstatedir=%{_localstatedir} \
+    --sharedstatedir=%{_sharedstatedir} \
+    --mandir=%{_mandir} \
+    --infodir=%{_infodir}
 make %{?_smp_mflags}
 %endif
 
@@ -268,8 +281,10 @@ popd
 %{_bindir}/regsvr32
 %{_bindir}/wine
 %{_bindir}/wine-preloader
+%ifarch x86_64
 %{_bindir}/wine64
 %{_bindir}/wine64-preloader
+%endif
 %{_bindir}/wineboot
 %{_bindir}/winecfg
 %{_bindir}/wineconsole
@@ -1028,6 +1043,74 @@ popd
 %{_libdir}/wine/xpsprint.dll.so
 %{_libdir}/wine/xpssvcs.dll.so
 
+%ifarch %{ix86}
+%{_libdir}/wine/avifile.dll16.so
+%{_libdir}/wine/comm.drv16.so
+%{_libdir}/wine/commdlg.dll16.so
+%{_libdir}/wine/compobj.dll16.so
+%{_libdir}/wine/ctl3d.dll16.so
+%{_libdir}/wine/ctl3dv2.dll16.so
+%{_libdir}/wine/ddeml.dll16.so
+%{_libdir}/wine/dispdib.dll16.so
+%{_libdir}/wine/display.drv16.so
+%{_libdir}/wine/gdi.exe16.so
+%{_libdir}/wine/ifsmgr.vxd.so
+%{_libdir}/wine/imm.dll16.so
+%{_libdir}/wine/keyboard.drv16.so
+%{_libdir}/wine/krnl386.exe16.so
+%{_libdir}/wine/lzexpand.dll16.so
+%{_libdir}/wine/mmdevldr.vxd.so
+%{_libdir}/wine/mmsystem.dll16.so
+%{_libdir}/wine/monodebg.vxd.so
+%{_libdir}/wine/mouse.drv16.so
+%{_libdir}/wine/msacm.dll16.so
+%{_libdir}/wine/msvideo.dll16.so
+%{_libdir}/wine/nvapi.dll.so
+%{_libdir}/wine/nvencodeapi.dll.so
+%{_libdir}/wine/ole2.dll16.so
+%{_libdir}/wine/ole2conv.dll16.so
+%{_libdir}/wine/ole2disp.dll16.so
+%{_libdir}/wine/ole2nls.dll16.so
+%{_libdir}/wine/ole2prox.dll16.so
+%{_libdir}/wine/ole2thk.dll16.so
+%{_libdir}/wine/olecli.dll16.so
+%{_libdir}/wine/olesvr.dll16.so
+%{_libdir}/wine/rasapi16.dll16.so
+%{_libdir}/wine/rundll.exe16.so
+%{_libdir}/wine/setupx.dll16.so
+%{_libdir}/wine/shell.dll16.so
+%{_libdir}/wine/sound.drv16.so
+%{_libdir}/wine/storage.dll16.so
+%{_libdir}/wine/stress.dll16.so
+%{_libdir}/wine/system.drv16.so
+%{_libdir}/wine/toolhelp.dll16.so
+%{_libdir}/wine/twain.dll16.so
+%{_libdir}/wine/typelib.dll16.so
+%{_libdir}/wine/user.exe16.so
+%{_libdir}/wine/vdhcp.vxd.so
+%{_libdir}/wine/ver.dll16.so
+%{_libdir}/wine/vmm.vxd.so
+%{_libdir}/wine/vnbt.vxd.so
+%{_libdir}/wine/vnetbios.vxd.so
+%{_libdir}/wine/vtdapi.vxd.so
+%{_libdir}/wine/vwin32.vxd.so
+%{_libdir}/wine/w32skrnl.dll.so
+%{_libdir}/wine/w32sys.dll16.so
+%{_libdir}/wine/win32s16.dll16.so
+%{_libdir}/wine/win87em.dll16.so
+%{_libdir}/wine/winaspi.dll16.so
+%{_libdir}/wine/windebug.dll16.so
+%{_libdir}/wine/wineps16.drv16.so
+%{_libdir}/wine/winevdm.exe.so
+%{_libdir}/wine/wing.dll16.so
+%{_libdir}/wine/winhelp.exe16.so
+%{_libdir}/wine/winnls.dll16.so
+%{_libdir}/wine/winoldap.mod16.so
+%{_libdir}/wine/winsock.dll16.so
+%{_libdir}/wine/wintab.dll16.so
+%{_libdir}/wine/wow32.dll.so
+%endif
+
 %if %{with staging}
 %{_libdir}/wine/api-ms-win-core-heap-l2-1-0.dll.so
 %{_libdir}/wine/api-ms-win-core-shlwapi-obsolete-l1-2-0.dll.so
@@ -1046,10 +1129,14 @@ popd
 %{_libdir}/wine/feclient.dll.so
 %{_libdir}/wine/iertutil.dll.so
 %{_libdir}/wine/msidb.exe.so
+%ifarch x86_64
 %{_libdir}/wine/nvapi64.dll.so
+%endif
 %{_libdir}/wine/nvcuda.dll.so
 %{_libdir}/wine/nvcuvid.dll.so
+%ifarch x86_64
 %{_libdir}/wine/nvencodeapi64.dll.so
+%endif
 %{_libdir}/wine/shcore.dll.so
 %{_libdir}/wine/uxtheme-gtk.dll.so
 %{_libdir}/wine/vulkan-1.dll.so
@@ -2036,6 +2123,9 @@ popd
 
 
 %changelog
+* Fri Aug 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-2
+- Fixes for i686 build
+
 * Wed Jul 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-1
 - Update to latest upstream release
 
