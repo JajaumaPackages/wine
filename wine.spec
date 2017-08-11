@@ -73,6 +73,7 @@ BuildRequires:  systemd-devel%{?_isa}
 %if %{with staging}
 BuildRequires:  gtk3-devel%{?_isa}
 BuildRequires:  libva-devel%{?_isa}
+BuildRequires:  pango-devel%{?_isa}
 %endif
 
 %if %{with mpg123}
@@ -134,6 +135,7 @@ BuildRequires:  systemd-devel(x86-32)
 %if %{with staging}
 BuildRequires:  gtk3-devel(x86-32)
 BuildRequires:  libva-devel(x86-32)
+BuildRequires:  pango-devel(x86-32)
 %endif
 
 %if %{with mpg123}
@@ -2124,6 +2126,7 @@ popd
 
 %changelog
 * Fri Aug 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-2
+- Require pango-devel for building
 - Fixes for i686 build
 
 * Wed Jul 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-1
