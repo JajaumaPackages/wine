@@ -45,6 +45,7 @@ BuildRequires:  lcms2-devel%{?_isa}
 BuildRequires:  libX11-devel%{?_isa}
 BuildRequires:  libXcomposite-devel%{?_isa}
 BuildRequires:  libXcursor-devel%{?_isa}
+BuildRequires:  libXdamage-devel%{?_isa}
 BuildRequires:  libXext-devel%{?_isa}
 BuildRequires:  libXfixes-devel%{?_isa}
 BuildRequires:  libXi-devel%{?_isa}
@@ -107,6 +108,7 @@ BuildRequires:  lcms2-devel(x86-32)
 BuildRequires:  libX11-devel(x86-32)
 BuildRequires:  libXcomposite-devel(x86-32)
 BuildRequires:  libXcursor-devel(x86-32)
+BuildRequires:  libXdamage-devel(x86-32)
 BuildRequires:  libXext-devel(x86-32)
 BuildRequires:  libXfixes-devel(x86-32)
 BuildRequires:  libXi-devel(x86-32)
@@ -2127,6 +2129,7 @@ popd
 %changelog
 * Fri Aug 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-2
 - Require pango-devel for building
+- Require libXdamage-devel for building
 - Fixes for i686 build
 
 * Wed Jul 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-1
