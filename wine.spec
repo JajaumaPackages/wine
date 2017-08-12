@@ -12,8 +12,8 @@
 
 Name:           wine
 Epoch:          2
-Version:        2.13
-Release:        3%{?dist}
+Version:        2.14
+Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
 License:        LGPLv2.1+
@@ -620,6 +620,7 @@ popd
 %{_libdir}/wine/dpwsockx.dll.so
 %{_libdir}/wine/drmclien.dll.so
 %{_libdir}/wine/dsound.dll.so
+%{_libdir}/wine/dsquery.dll.so
 %{_libdir}/wine/dssenh.dll.so
 %{_libdir}/wine/dswave.dll.so
 %{_libdir}/wine/dwmapi.dll.so
@@ -879,6 +880,7 @@ popd
 %{_libdir}/wine/rsaenh.dll.so
 %{_libdir}/wine/rstrtmgr.dll.so
 %{_libdir}/wine/rtutils.dll.so
+%{_libdir}/wine/runas.exe.so
 %{_libdir}/wine/rundll32.exe.so
 %{_libdir}/wine/samlib.dll.so
 %{_libdir}/wine/sane.ds.so
@@ -937,6 +939,7 @@ popd
 %{_libdir}/wine/twain_32.dll.so
 %{_libdir}/wine/ucrtbase.dll.so
 %{_libdir}/wine/uiautomationcore.dll.so
+%{_libdir}/wine/uiribbon.dll.so
 %{_libdir}/wine/unicows.dll.so
 %{_libdir}/wine/uninstaller.exe.so
 %{_libdir}/wine/unlodctr.exe.so
@@ -1515,6 +1518,7 @@ popd
 %{lib32dir}/wine/dpwsockx.dll.so
 %{lib32dir}/wine/drmclien.dll.so
 %{lib32dir}/wine/dsound.dll.so
+%{lib32dir}/wine/dsquery.dll.so
 %{lib32dir}/wine/dssenh.dll.so
 %{lib32dir}/wine/dswave.dll.so
 %{lib32dir}/wine/dwmapi.dll.so
@@ -1795,6 +1799,7 @@ popd
 %{lib32dir}/wine/rsaenh.dll.so
 %{lib32dir}/wine/rstrtmgr.dll.so
 %{lib32dir}/wine/rtutils.dll.so
+%{lib32dir}/wine/runas.exe.so
 %{lib32dir}/wine/rundll.exe16.so
 %{lib32dir}/wine/rundll32.exe.so
 %{lib32dir}/wine/samlib.dll.so
@@ -1863,6 +1868,7 @@ popd
 %{lib32dir}/wine/typelib.dll16.so
 %{lib32dir}/wine/ucrtbase.dll.so
 %{lib32dir}/wine/uiautomationcore.dll.so
+%{lib32dir}/wine/uiribbon.dll.so
 %{lib32dir}/wine/unicows.dll.so
 %{lib32dir}/wine/uninstaller.exe.so
 %{lib32dir}/wine/unlodctr.exe.so
@@ -2120,6 +2126,9 @@ popd
 
 
 %changelog
+* Sat Aug 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.14-1
+- Update to latest upstream release
+
 * Sat Aug 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-3
 - Try to export as many distribution flags as possible
 
