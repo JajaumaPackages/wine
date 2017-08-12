@@ -13,7 +13,7 @@
 Name:           wine
 Epoch:          2
 Version:        2.13
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        A compatibility layer for windows applications
 
 License:        LGPLv2.1+
@@ -181,16 +181,15 @@ make -C patches DESTDIR="$(pwd)" install
 
 
 %build
-# Export some of distribution factory compiler flags manually. Try not to
-# export any machine flags (e.g. -m64) as those would break side-by-side WoW64
-# building. Exporting -D_FORTIFY_SOURCE=2 issues some (non-fatal) complaints as
-# well so let's better hide it from the build system.
-export CFLAGS="$(echo %{__global_cflags} | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//')"
-export LDFLAGS="%{__global_ldflags}"
-
 %ifarch x86_64
 mkdir wine{32,64}-build
+
 pushd wine64-build
+# Export some of distribution factory compiler flags manually. Exporting
+# -D_FORTIFY_SOURCE=2 issues some (non-fatal) complaints so let's better hide
+# it from the build system.
+export CFLAGS="$(echo %{optflags} | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//')"
+export LDFLAGS="%{__global_ldflags}"
 ../configure \
     --enable-win64 \
     %{?_without_mpg123} \
@@ -214,6 +213,9 @@ make %{?_smp_mflags}
 popd
 
 pushd wine32-build
+# Avoid exporting any machine flags as those would break side-by-side WoW64
+# building and also hide distribution _FORTIFY_SOURCE.
+export CFLAGS="$(echo %{__global_cflags} | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//')"
 PKG_CONFIG_PATH=%{lib32dir}/pkgconfig/ ../configure \
     --with-wine64=../wine64-build/ \
     %{?_without_mpg123} \
@@ -238,24 +240,13 @@ popd
 %endif
 
 %ifarch %{ix86}
-./configure \
+# No _FORTIFY_SOURCE redefinition complaints and rely on distribution flags
+# otherwise as much as possible
+export CFLAGS="$(echo %{optflags} | sed -e 's/-Wp,-D_FORTIFY_SOURCE=2//')"
+%configure \
     %{?_without_mpg123} \
     %{?_without_opencl} \
-    %{?_without_openal} \
-    --program-prefix=%{?_program_prefix} \
-    --prefix=%{_prefix} \
-    --exec-prefix=%{_exec_prefix} \
-    --bindir=%{_bindir} \
-    --sbindir=%{_sbindir} \
-    --sysconfdir=%{_sysconfdir} \
-    --datadir=%{_datadir} \
-    --includedir=%{_includedir} \
-    --libdir=%{_libdir} \
-    --libexecdir=%{_libexecdir} \
-    --localstatedir=%{_localstatedir} \
-    --sharedstatedir=%{_sharedstatedir} \
-    --mandir=%{_mandir} \
-    --infodir=%{_infodir}
+    %{?_without_openal}
 make %{?_smp_mflags}
 %endif
 
@@ -2129,6 +2120,9 @@ popd
 
 
 %changelog
+* Sat Aug 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-3
+- Try to export as many distribution flags as possible
+
 * Fri Aug 11 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.13-2
 - Require pango-devel for building
 - Require libXdamage-devel for building
