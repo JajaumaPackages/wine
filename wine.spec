@@ -12,7 +12,7 @@
 
 Name:           wine
 Epoch:          2
-Version:        2.14
+Version:        2.15
 Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
@@ -688,6 +688,7 @@ popd
 %{_libdir}/wine/icinfo.exe.so
 %{_libdir}/wine/icmp.dll.so
 %{_libdir}/wine/ieframe.dll.so
+%{_libdir}/wine/ieproxy.dll.so
 %{_libdir}/wine/iexplore.exe.so
 %{_libdir}/wine/imaadp32.acm.so
 %{_libdir}/wine/imagehlp.dll.so
@@ -1587,6 +1588,7 @@ popd
 %{lib32dir}/wine/icinfo.exe.so
 %{lib32dir}/wine/icmp.dll.so
 %{lib32dir}/wine/ieframe.dll.so
+%{lib32dir}/wine/ieproxy.dll.so
 %{lib32dir}/wine/iexplore.exe.so
 %{lib32dir}/wine/ifsmgr.vxd.so
 %{lib32dir}/wine/imaadp32.acm.so
@@ -2126,6 +2128,9 @@ popd
 
 
 %changelog
+* Sat Aug 26 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.15-1
+- Update to latest upstream release
+
 * Sat Aug 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.14-1
 - Update to latest upstream release
 
