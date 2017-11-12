@@ -12,7 +12,7 @@
 
 Name:           wine
 Epoch:          2
-Version:        2.16
+Version:        2.17
 Release:        1%{?dist}
 Summary:        A compatibility layer for windows applications
 
@@ -357,6 +357,9 @@ popd
 
 
 %changelog
+* Sun Nov 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.17-1
+- Update to latest upstream release
+
 * Sun Nov 12 2017 Jajauma's Packages <jajauma@yandex.ru> - 2:2.16-1
 - Update to latest upstream release
 
