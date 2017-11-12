@@ -29,6 +29,10 @@ BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  gettext
 
+%if %{with staging}
+BuildRequires:  autoconf
+%endif
+
 BuildRequires:  alsa-lib-devel%{?_isa}
 BuildRequires:  cairo-devel%{?_isa}
 BuildRequires:  cups-devel%{?_isa}
